@@ -64,6 +64,7 @@ fun SignInScreen(
                     value = password,
                     onValueChange = { password = it },
                     label = { Text("Password") },
+                    supportingText = { Text("Hint: kotlin123") },
                     visualTransformation = PasswordVisualTransformation(),
                     modifier = Modifier.fillMaxWidth()
                 )
