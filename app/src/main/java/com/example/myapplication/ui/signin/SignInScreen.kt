@@ -91,11 +91,12 @@ fun SignInRoute(
     viewModel: SignInViewModel = viewModel()
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
-    val uiState = viewModel.uiState.value
+    val stateObs = viewModel.uiState
 
-    LaunchedEffect(uiState) {
-        if (uiState is SignInUiState.Error) {
-            snackbarHostState.showSnackbar(uiState.message)
+    LaunchedEffect(stateObs.value) {
+        val state = stateObs.value
+        if (state is SignInUiState.Error) {
+            snackbarHostState.showSnackbar(state.message)
             viewModel.onErrorShown()
         }
     }
@@ -105,7 +106,7 @@ fun SignInRoute(
         snackbarHost = { SnackbarHost(snackbarHostState) }
     ) { innerPadding ->
         SignInScreen(
-            uiState = uiState,
+            uiState = stateObs.value,
             onSignIn = viewModel::onSignIn,
             modifier = Modifier.padding(innerPadding)
         )
