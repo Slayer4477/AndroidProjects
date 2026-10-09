@@ -17,7 +17,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun Task13_GenreChips(
+fun GenreChipsRow(
     genres: List<String>,
     selectedGenre: String?,
     onGenreClick: (String) -> Unit,
@@ -39,20 +39,20 @@ fun Task13_GenreChips(
 }
 
 @Composable
-fun Task13_TastePickerScreen(
-    state: TastePickerState,
+fun Task13(
+    state: Task10State,
     onGenreClick: (String) -> Unit,
     onLikeClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Scaffold(modifier = modifier) { innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {
-            Task13_GenreChips(
+            GenreChipsRow(
                 genres = state.genres,
                 selectedGenre = state.selectedGenre,
                 onGenreClick = onGenreClick
             )
-            Task12_ArtistGrid(
+            Task12(
                 artists = state.visibleArtists,
                 likedIds = state.likedIds,
                 onLikeClick = onLikeClick
@@ -62,13 +62,13 @@ fun Task13_TastePickerScreen(
 }
 
 @Composable
-fun Task13_TastePickerRoute(
+fun Task13Route(
     modifier: Modifier = Modifier,
-    viewModel: TastePickerViewModel = viewModel()
+    viewModel: Task11ViewModel = viewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
-    Task13_TastePickerScreen(
+    Task13(
         state = state,
         onGenreClick = viewModel::onGenreClick,
         onLikeClick = viewModel::onArtistLikeToggled,

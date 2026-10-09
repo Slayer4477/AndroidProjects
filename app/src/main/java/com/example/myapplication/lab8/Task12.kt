@@ -32,8 +32,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun Task12_ArtistCard(
-    artist: Artist,
+fun Task12Card(
+    artist: ArtistModel,
     liked: Boolean,
     onLikeClick: () -> Unit,
     modifier: Modifier = Modifier
@@ -77,8 +77,8 @@ fun Task12_ArtistCard(
 }
 
 @Composable
-fun Task12_ArtistGrid(
-    artists: List<Artist>,
+fun Task12(
+    artists: List<ArtistModel>,
     likedIds: Set<Int>,
     onLikeClick: (Int) -> Unit,
     modifier: Modifier = Modifier
@@ -92,7 +92,7 @@ fun Task12_ArtistGrid(
             items = artists,
             key = { it.id }
         ) { artist ->
-            Task12_ArtistCard(
+            Task12Card(
                 artist = artist,
                 liked = artist.id in likedIds,
                 onLikeClick = { onLikeClick(artist.id) }
@@ -103,9 +103,9 @@ fun Task12_ArtistGrid(
 
 @Preview(showBackground = true)
 @Composable
-fun Task12_PreviewGrid() {
-    Task12_ArtistGrid(
-        artists = seedArtists,
+fun Task12Preview() {
+    Task12(
+        artists = sampleArtistsList,
         likedIds = setOf(1, 4),
         onLikeClick = {}
     )

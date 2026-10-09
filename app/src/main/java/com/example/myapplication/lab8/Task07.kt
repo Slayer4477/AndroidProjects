@@ -24,8 +24,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun Task07_SignInScreen(
-    uiState: SignInUiState,
+fun Task07(
+    uiState: SignInUiStateModel,
     onSignIn: (email: String, password: String) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -40,7 +40,7 @@ fun Task07_SignInScreen(
         verticalArrangement = Arrangement.Center
     ) {
         when (uiState) {
-            is SignInUiState.SignedIn -> {
+            is SignInUiStateModel.SignedIn -> {
                 Text(
                     text = "Welcome, ${uiState.email}",
                     style = MaterialTheme.typography.headlineMedium
@@ -64,12 +64,12 @@ fun Task07_SignInScreen(
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(
                     onClick = { onSignIn(email, password) },
-                    enabled = uiState !is SignInUiState.InProgress,
+                    enabled = uiState !is SignInUiStateModel.InProgress,
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text("Sign in")
                 }
-                if (uiState is SignInUiState.InProgress) {
+                if (uiState is SignInUiStateModel.InProgress) {
                     Spacer(modifier = Modifier.height(16.dp))
                     CircularProgressIndicator()
                 }
@@ -78,26 +78,8 @@ fun Task07_SignInScreen(
     }
 }
 
-@Preview(showBackground = true, name = "Signed Out")
+@Preview(showBackground = true)
 @Composable
-fun Task07_PreviewSignedOut() {
-    Task07_SignInScreen(uiState = SignInUiState.SignedOut, onSignIn = { _, _ -> })
-}
-
-@Preview(showBackground = true, name = "In Progress")
-@Composable
-fun Task07_PreviewInProgress() {
-    Task07_SignInScreen(uiState = SignInUiState.InProgress, onSignIn = { _, _ -> })
-}
-
-@Preview(showBackground = true, name = "Error")
-@Composable
-fun Task07_PreviewError() {
-    Task07_SignInScreen(uiState = SignInUiState.Error("Wrong email or password"), onSignIn = { _, _ -> })
-}
-
-@Preview(showBackground = true, name = "Signed In")
-@Composable
-fun Task07_PreviewSignedIn() {
-    Task07_SignInScreen(uiState = SignInUiState.SignedIn("user@example.com"), onSignIn = { _, _ -> })
+fun Task07Preview() {
+    Task07(uiState = SignInUiStateModel.SignedOut, onSignIn = { _, _ -> })
 }

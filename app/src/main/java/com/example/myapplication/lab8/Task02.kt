@@ -10,38 +10,18 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun Task03_NameField(
-    name: String,
-    onNameChange: (String) -> Unit,
-    modifier: Modifier = Modifier
-) {
-    OutlinedTextField(
-        value = name,
-        onValueChange = onNameChange,
-        label = { Text("Name") },
-        modifier = modifier
-    )
-}
-
-@Composable
-fun Task03_NameScreen(modifier: Modifier = Modifier) {
+fun Task02(modifier: Modifier = Modifier) {
     var name by rememberSaveable { mutableStateOf("") }
 
     Column(modifier = modifier.padding(24.dp)) {
-        Task03_NameField(
-            name = name,
-            onNameChange = { name = it }
+        OutlinedTextField(
+            value = name,
+            onValueChange = { name = it },
+            label = { Text("Name") }
         )
         Text("Hello, $name!")
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun Task03_NameFieldPreview() {
-    Task03_NameField(name = "Amin", onNameChange = {})
 }

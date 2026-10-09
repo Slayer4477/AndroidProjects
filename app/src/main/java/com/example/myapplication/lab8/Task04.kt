@@ -14,10 +14,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
-data class News(val title: String, val subtitle: String, val views: Int)
+data class NewsItem(val title: String, val subtitle: String, val views: Int)
 
 @Composable
-fun Task04_Header(news: News) {
+fun Header(news: NewsItem) {
     SideEffect { Log.d("Recompose", "Header(news)") }
     Column {
         Text(news.title)
@@ -26,7 +26,7 @@ fun Task04_Header(news: News) {
 }
 
 @Composable
-fun Task04_Header(title: String, subtitle: String) {
+fun Header(title: String, subtitle: String) {
     SideEffect { Log.d("Recompose", "Header(title, subtitle)") }
     Column {
         Text(title)
@@ -35,14 +35,14 @@ fun Task04_Header(title: String, subtitle: String) {
 }
 
 @Composable
-fun Task04_NewsScreen(modifier: Modifier = Modifier) {
+fun Task04(modifier: Modifier = Modifier) {
     var news by remember {
-        mutableStateOf(News("Compose is declarative", "State in, UI out", views = 0))
+        mutableStateOf(NewsItem("Compose is declarative", "State in, UI out", views = 0))
     }
 
     Column(modifier = modifier.padding(24.dp)) {
-        Task04_Header(news)
-        Task04_Header(news.title, news.subtitle)
+        Header(news)
+        Header(news.title, news.subtitle)
         Text("Views: ${news.views}")
         Button(onClick = { news = news.copy(views = news.views + 1) }) {
             Text("Add view")

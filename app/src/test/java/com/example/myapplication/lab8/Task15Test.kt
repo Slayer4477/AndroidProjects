@@ -5,11 +5,11 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-class Task15_TastePickerViewModelTest {
+class Task15Test {
 
     @Test
     fun toggling_like_adds_then_removes_artist() {
-        val vm = TastePickerViewModel()
+        val vm = Task11ViewModel()
 
         vm.onArtistLikeToggled(1)
         assertEquals(setOf(1), vm.state.value.likedIds)
@@ -20,7 +20,7 @@ class Task15_TastePickerViewModelTest {
 
     @Test
     fun continue_is_enabled_only_after_three_likes() {
-        val vm = TastePickerViewModel()
+        val vm = Task11ViewModel()
 
         vm.onArtistLikeToggled(1)
         vm.onArtistLikeToggled(2)
@@ -32,7 +32,7 @@ class Task15_TastePickerViewModelTest {
 
     @Test
     fun selecting_genre_filters_and_tapping_again_clears() {
-        val vm = TastePickerViewModel()
+        val vm = Task11ViewModel()
 
         vm.onGenreClick("Rock")
         assertEquals(3, vm.state.value.visibleArtists.size)
@@ -44,7 +44,7 @@ class Task15_TastePickerViewModelTest {
 
     @Test
     fun likes_survive_changing_the_genre_filter() {
-        val vm = TastePickerViewModel()
+        val vm = Task11ViewModel()
 
         vm.onArtistLikeToggled(1)
         vm.onGenreClick("Jazz")

@@ -11,17 +11,16 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun Task09_SignInRoute(
+fun Task08(
     modifier: Modifier = Modifier,
-    viewModel: SignInViewModel = viewModel()
+    viewModel: Task06ViewModel = viewModel()
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
     val uiState = viewModel.uiState.value
 
     LaunchedEffect(uiState) {
-        if (uiState is SignInUiState.Error) {
+        if (uiState is SignInUiStateModel.Error) {
             snackbarHostState.showSnackbar(uiState.message)
-            viewModel.onErrorShown()
         }
     }
 
@@ -29,7 +28,7 @@ fun Task09_SignInRoute(
         modifier = modifier,
         snackbarHost = { SnackbarHost(snackbarHostState) }
     ) { innerPadding ->
-        Task07_SignInScreen(
+        Task07(
             uiState = uiState,
             onSignIn = viewModel::onSignIn,
             modifier = Modifier.padding(innerPadding)

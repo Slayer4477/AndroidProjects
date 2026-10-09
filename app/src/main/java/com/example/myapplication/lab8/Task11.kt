@@ -6,9 +6,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-class TastePickerViewModel : ViewModel() {
-    private val _state = MutableStateFlow(TastePickerState(artists = seedArtists))
-    val state: StateFlow<TastePickerState> = _state.asStateFlow()
+class Task11ViewModel : ViewModel() {
+    private val _state = MutableStateFlow(Task10State())
+    val state: StateFlow<Task10State> = _state.asStateFlow()
 
     fun onGenreClick(genre: String) {
         _state.update {

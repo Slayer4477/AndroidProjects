@@ -25,7 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun Task14_TastePickerBottomBar(
+fun Task14BottomBar(
     likedCount: Int,
     required: Int,
     canContinue: Boolean,
@@ -84,8 +84,8 @@ fun Task14_TastePickerBottomBar(
 }
 
 @Composable
-fun Task14_FullTastePickerScreen(
-    state: TastePickerState,
+fun Task14(
+    state: Task10State,
     onGenreClick: (String) -> Unit,
     onLikeClick: (Int) -> Unit,
     modifier: Modifier = Modifier,
@@ -95,9 +95,9 @@ fun Task14_FullTastePickerScreen(
     Scaffold(
         modifier = modifier,
         bottomBar = {
-            Task14_TastePickerBottomBar(
+            Task14BottomBar(
                 likedCount = state.likedCount,
-                required = REQUIRED_LIKES,
+                required = REQUIRED_LIKES_COUNT,
                 canContinue = state.canContinue,
                 onContinueClick = onContinueClick,
                 onSkipClick = onSkipClick
@@ -105,12 +105,12 @@ fun Task14_FullTastePickerScreen(
         }
     ) { innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {
-            Task13_GenreChips(
+            GenreChipsRow(
                 genres = state.genres,
                 selectedGenre = state.selectedGenre,
                 onGenreClick = onGenreClick
             )
-            Task12_ArtistGrid(
+            Task12(
                 artists = state.visibleArtists,
                 likedIds = state.likedIds,
                 onLikeClick = onLikeClick
@@ -119,20 +119,8 @@ fun Task14_FullTastePickerScreen(
     }
 }
 
-@Preview(showBackground = true, name = "0 Liked")
+@Preview(showBackground = true)
 @Composable
-fun Task14_Preview0() {
-    Task14_TastePickerBottomBar(likedCount = 0, required = 3, canContinue = false, onContinueClick = {}, onSkipClick = {})
-}
-
-@Preview(showBackground = true, name = "2 Liked")
-@Composable
-fun Task14_Preview2() {
-    Task14_TastePickerBottomBar(likedCount = 2, required = 3, canContinue = false, onContinueClick = {}, onSkipClick = {})
-}
-
-@Preview(showBackground = true, name = "3 Liked")
-@Composable
-fun Task14_Preview3() {
-    Task14_TastePickerBottomBar(likedCount = 3, required = 3, canContinue = true, onContinueClick = {}, onSkipClick = {})
+fun Task14Preview() {
+    Task14BottomBar(likedCount = 2, required = 3, canContinue = false, onContinueClick = {}, onSkipClick = {})
 }

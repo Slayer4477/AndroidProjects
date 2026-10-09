@@ -4,6 +4,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 
 @Composable
-fun Task01_Setup() {
-    Text("Task 01: Project Setup")
+fun Task01() {
+    Text("Task 01")
 }
