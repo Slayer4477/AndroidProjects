@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
-import com.example.myapplication.ui.taste.TastePickerRoute
+import com.example.myapplication.ui.signin.SignInRoute
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -15,7 +15,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyApplicationTheme {
-                TastePickerRoute(modifier = Modifier.fillMaxSize())
+                SignInRoute(modifier = Modifier.fillMaxSize())
             }
         }
     }
