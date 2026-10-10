@@ -1,15 +1,15 @@
-# Lab 8 — Architecting a Compose UI
+# Lab 8 & Practice 5 - Android App
 
-Android application built with **Jetpack Compose** and **Material 3**, demonstrating state management, unidirectional data flow, ViewModels, and responsive layout.
+Bu loyiha Jetpack Compose va Material 3 da yozilgan o'quv laboratoriya ishi hisoblanadi.
 
-## Features
-- **Part A:** State persistence (`remember` vs `rememberSaveable`), state hoisting, and decoupling composables.
-- **Part B:** Sign-in screen driven by `SignInViewModel` and `SignInUiState` sealed interface with Snackbar error handling and event consumption.
-- **Part C:** Taste Picker onboarding screen with `StateFlow`, reactive `TastePickerViewModel`, artist grid, genre chips, and unit tests.
-- **Practice 5:** Complete solutions for Jetpack Compose Modifiers and Material 3 design principles (Q1–Q42).
+## Nimalar qilingan:
+- **Part A:** remember va rememberSaveable orqali stateni saqlash va state hoisting.
+- **Part B:** ViewModel va Sealed Interface yordamida yozilgan Sign-In (Kirish) ekrani.
+- **Part C:** Artistlarni tanlash uchun Taste Picker ekran va grid qismi, hamda Unit testlar.
+- **Practice 5:** Compose Modifier va Material 3 savollarining javoblari (Q1-Q42).
 
-## Tech Stack
+## Texnologiyalar:
 - Kotlin & Jetpack Compose
 - Material 3
-- ViewModel & StateFlow
-- JUnit 4 Unit Testing
+- ViewModel
+- JUnit Unit Tests
